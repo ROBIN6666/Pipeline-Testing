@@ -20,4 +20,4 @@ jobs:
       run: echo "${{ secrets.PASSWORD }}" | docker login --username ${{ secrets.USERNAME }} --password-stdin
 
     - name: Push Docker image to Docker Hub
-      run: docker push my_python_app:latest
+      run: docker push my-python-app:latest
