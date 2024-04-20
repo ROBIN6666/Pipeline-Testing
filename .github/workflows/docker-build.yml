@@ -1,12 +1,12 @@
-name: Deploy Docker Image
+name: CI/CD Pipeline
 
 on:
   push:
     branches:
-      - main  # Adjust the branch name as needed
+      - main
 
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-latest
 
     steps:
@@ -15,6 +15,12 @@ jobs:
 
     - name: Set up Docker Buildx
       uses: docker/setup-buildx-action@v1
+
+    - name: Build Docker image
+      run: docker build --file Dockerfile --tag my-app:latest .
+
+    - name: Tag Docker image
+      run: docker tag my-app:latest rahulkumark72384/my-app:latest
 
     - name: Log in to Docker Hub
       run: echo "${{ secrets.PASSWORD }}" | docker login --username ${{ secrets.USERNAME }} --password-stdin
