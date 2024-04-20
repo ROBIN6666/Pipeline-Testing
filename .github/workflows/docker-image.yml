@@ -18,5 +18,8 @@ jobs:
 
     - name: Build Docker image
       run: docker build --file Dockerfile --tag my-python-app:latest .
+    
+    - name: Tag Docker image
+      run: docker tag my-python-app:latest rahulkumark37382/my-python-app:latest
 
     # Add additional steps for testing your application if needed
